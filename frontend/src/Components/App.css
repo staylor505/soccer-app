@@ -1,0 +1,10 @@
+.text {
+  word-wrap:break-word;
+}
+.card-content {
+  padding-bottom: 140px !important;
+}
+.card-action {
+  clear: both;
+  font-size: 1.25vw;
+}
