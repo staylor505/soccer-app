@@ -5,7 +5,7 @@ import cors from 'cors';
 import routes from "./routes/soccerRoutes";
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // mongo connection
 mongoose.Promise = global.Promise;
@@ -31,5 +31,5 @@ app.get('/', (req, res) =>
 );
 
 app.listen(PORT, () =>
-  console.log(`Your soccer server is running on port ${PORT}`)
+  console.log(`Your soccer server is running on port: http://localhost:${PORT}`)
 )
