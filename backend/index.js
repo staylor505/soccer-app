@@ -11,7 +11,7 @@ const PORT = 4000;
 mongoose.Promise = global.Promise;
 
 // mongoose.connect('mongodb://localhost:27017/soccerDB')
-mongoose.connect(`mongodb+srv://taylors:REDACTED@cluster0.usfchj7.mongodb.net/soccerDB/?retryWrites=true&w=majority&appName=Cluster0`)
+mongoose.connect(`mongodb+srv://taylors:REDACTED@cluster0.usfchj7.mongodb.net/soccerDB?retryWrites=true&w=majority&appName=Cluster0`)
   .then(() => console.log('mongoDB Connected!'))
   .catch((err) => {
     console.log(err);
@@ -27,7 +27,7 @@ app.use(cors());
 routes(app);
 
 app.get('/', (req, res) => 
-  res.send(`Our Soccer application is running on port ${PORT}`)
+  res.send(`Soccer Management application is running on port ${PORT}`)
 );
 
 app.listen(PORT, () =>
