@@ -1,6 +1,6 @@
 # Soccer Management App
 ![Kicking Soccer Ball](frontend/public/soccer.jpeg)
-## First MERN app development
+## First MERN app development (probably not going well)
 ### Highlights:
 * create backend NodeJS and Express Server
 * handle routes for players
