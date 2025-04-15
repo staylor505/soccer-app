@@ -1,5 +1,5 @@
 .text {
-  word-wrap:break-word;
+  word-wrap: break-word;
 }
 .card-content {
   padding-bottom: 140px !important;
@@ -7,4 +7,16 @@
 .card-action {
   clear: both;
   font-size: 1.25vw;
+}
+#logo {
+  margin: 8px;
+}
+#title {
+  margin: 0 10px;
+  position: absolute;
+  width: 300px;
+}
+.no-players {
+  font-style: italic;
+  color: red;
 }
