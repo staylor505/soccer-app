@@ -2,77 +2,113 @@
 
 ![Kicking Soccer Ball](frontend/public/soccer.jpeg)
 
-## First MERN App Development
+A full-stack soccer player management app built with Node, Express, React, MongoDB, and Vite.
 
-### Highlights:
+## Features
 
-- Create backend NodeJS and Express Server
-- Handle routes for players
-- Create frontend with ReactJS
-- Use Axios to handle form data
-- Use MongoDB to store player info
+- View, add, edit, and delete players
+- Select a current player from the list and view detailed stats
+- Upload player photos from the form
+- Replace or remove an existing player photo while editing
+- Custom delete confirmation modal
 
-## Getting Started
+## Tech Stack
 
-### Prerequisites
+- Backend: Node.js, Express, Mongoose, Multer
+- Frontend: React 18, Vite, Axios, Materialize CSS
+- Database: MongoDB
 
-- Node.js
-- Express.js
-- MongoDB
-- React.js
-- npm or yarn
+## Project Structure
 
-### Installation
+```text
+backend/
+frontend/
+README.md
+```
 
-1. Clone the repository:
+## Prerequisites
 
-   ```sh
-   git clone <repository-url>
-   ```
+- Node.js 18+
+- npm
+- MongoDB connection string
 
-2. Install backend dependencies:
+## Setup
 
-   ```sh
-   cd backend
-   npm install
-   ```
+1. Install backend dependencies:
 
-3. Install frontend dependencies:
-   ```sh
-   cd ../frontend
-   npm install
-   ```
+```sh
+cd backend
+npm install
+```
 
-### Running the Application
+1. Create `backend/.env` with your values:
 
-1. Start the backend server:
+```env
+PORT=4000
+MONGODB_URI=<your-mongodb-connection-string>
+```
 
-   ```sh
-   cd backend
-   npm start
-   ```
+1. Install frontend dependencies:
 
-2. Start the frontend development server:
-   ```sh
-   cd ../frontend
-   npm start
-   ```
+```sh
+cd ../frontend
+npm install
+```
 
-### API Endpoints
+1. Optional: create `frontend/.env` to override API URL:
 
-- `GET /players` - Retrieve all players
-- `POST /players` - Add a new player
-- `PUT /players/:id` - Update a player
-- `DELETE /players/:id` - Delete a player
+```env
+REACT_APP_API_URL=http://localhost:4000
+```
 
-### Technologies Used
+## Run the App
 
-- Node.js
-- Express
-- React
-- Axios
-- MongoDB
+From two separate terminals:
+
+1. Start backend:
+
+```sh
+cd backend
+npm start
+```
+
+1. Start frontend:
+
+```sh
+cd frontend
+npm start
+```
+
+Frontend runs on `http://localhost:3000`.
+Backend runs on `http://localhost:4000`.
+
+## Available Scripts
+
+### Backend
+
+- `npm start` - runs backend with nodemon + babel-node
+
+### Frontend
+
+- `npm start` or `npm run dev` - start Vite dev server
+- `npm run build` - production build
+- `npm run preview` - preview production build
+
+## API Endpoints
+
+- `GET /players` - retrieve all players
+- `POST /players` - create player (supports multipart file upload via `image` field)
+- `GET /players/:playerid` - retrieve one player
+- `PUT /players/:playerid` - update player (supports image replace/remove)
+- `DELETE /players/:playerid` - delete player
+- `GET /health` - health check
+
+## Image Upload Notes
+
+- Accepted file types: `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`
+- Max file size: 5 MB
+- Uploaded files are served from `/uploads`
 
 ## License
 
-This project is licensed under the MIT License.
+MIT

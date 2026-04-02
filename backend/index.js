@@ -1,38 +1,57 @@
+import "dotenv/config";
+import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
-import bodyparser from "body-parser";
-import cors from "cors";
+import path from "path";
 import routes from "./routes/soccerRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/soccerDB";
 
-// mongo connection
-mongoose.Promise = global.Promise;
-
-// mongoose.connect('mongodb://localhost:27017/soccerDB')
-mongoose
-  .connect(
-    `mongodb+srv://taylors:REDACTED@cluster0.usfchj7.mongodb.net/soccerDB?retryWrites=true&w=majority&appName=Cluster0`
-  )
-  .then(() => console.log("Connected to MongoDB!"))
-  .catch((err) => {
-    console.log(err);
-  });
-
-// bodyparser setup
-app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
-
-// CORS setup
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+app.get("/", (req, res) => {
+  res.send(`Soccer Management app is running on Port ${PORT}.`);
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 
 routes(app);
 
-app.get("/", (req, res) =>
-  res.send(`Soccer Management app is running on Port ${PORT}.`)
-);
+app.use((req, res) => {
+  res.status(404).json({ message: `Route ${req.originalUrl} not found.` });
+});
 
-app.listen(PORT, () =>
-  console.log(`Your soccer server is running on Port: http://localhost:${PORT}`)
-);
+app.use((err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  console.error(err);
+
+  return res.status(err.statusCode || 500).json({
+    message: err.message || "Internal server error.",
+  });
+});
+
+const startServer = async () => {
+  try {
+    await mongoose.connect(MONGODB_URI);
+    console.log("Connected to MongoDB.");
+
+    app.listen(PORT, () => {
+      console.log(`Your soccer server is running on Port: http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to start server.", error);
+    process.exit(1);
+  }
+};
+
+startServer();

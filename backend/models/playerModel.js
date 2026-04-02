@@ -2,55 +2,94 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-export const PlayerSchema = new Schema({
-  firstName: {
-    type: String,
-    required: true,
+const normalizeRating = (value) => {
+  if (value === "" || value === null || value === undefined) {
+    return undefined;
+  }
+
+  return Number(value);
+};
+
+export const PlayerSchema = new Schema(
+  {
+    firstName: {
+      type: String,
+      required: [true, "First name is required."],
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: [true, "Last name is required."],
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: [true, "Email is required."],
+      trim: true,
+      lowercase: true,
+      match: [/^\S+@\S+\.\S+$/, "Please provide a valid email address."],
+    },
+    phone: {
+      type: String,
+      trim: true,
+    },
+    iscoach: {
+      type: Boolean,
+      default: false,
+    },
+    team: {
+      type: String,
+      trim: true,
+    },
+    speed: {
+      type: Number,
+      min: 1,
+      max: 5,
+      set: normalizeRating,
+    },
+    strength: {
+      type: Number,
+      min: 1,
+      max: 5,
+      set: normalizeRating,
+    },
+    endurance: {
+      type: Number,
+      min: 1,
+      max: 5,
+      set: normalizeRating,
+    },
+    ability: {
+      type: Number,
+      min: 1,
+      max: 5,
+      set: normalizeRating,
+    },
+    techniques: {
+      type: Number,
+      min: 1,
+      max: 5,
+      set: normalizeRating,
+    },
+    tactical: {
+      type: Number,
+      min: 1,
+      max: 5,
+      set: normalizeRating,
+    },
+    image: {
+      type: String,
+      trim: true,
+    },
   },
-  lastName: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  phone: {
-    type: String,
-  },
-  iscoach: {
-    type: Boolean,
-    default: false,
-  },
-  team: {
-    type: String,
-  },
-  speed: {
-    type: Number,
-    enum: [1, 2, 3, 4, 5],
-  },
-  strength: {
-    type: Number,
-    enum: [1, 2, 3, 4, 5],
-  },
-  endurance: {
-    type: Number,
-    enum: [1, 2, 3, 4, 5],
-  },
-  ability: {
-    type: Number,
-    enum: [1, 2, 3, 4, 5],
-  },
-  techniques: {
-    type: Number,
-    enum: [1, 2, 3, 4, 5],
-  },
-  tactical: {
-    type: Number,
-    enum: [1, 2, 3, 4, 5],
-  },
-  created_date: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  {
+    timestamps: {
+      createdAt: "created_date",
+      updatedAt: "updated_date",
+    },
+  }
+);
+
+const Player = mongoose.models.Player || mongoose.model("Player", PlayerSchema);
+
+export default Player;
