@@ -16,6 +16,14 @@ function App() {
   const [playerToDelete, setPlayerToDelete] = useState(null);
   const formRef = useRef(null);
 
+  const scrollToForm = useCallback(() => {
+    requestAnimationFrame(() => {
+      if (formRef.current) {
+        formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  }, []);
+
   const fetchPlayers = useCallback((selectedPlayerId) => {
     setIsLoading(true);
     setErrorMessage("");
@@ -46,6 +54,12 @@ function App() {
     fetchPlayers();
   }, [fetchPlayers]);
 
+  useEffect(() => {
+    if (isFormVisible) {
+      scrollToForm();
+    }
+  }, [isFormVisible, editingPlayer, scrollToForm]);
+
   const handlePlayerSaved = (player) => {
     setEditingPlayer(null);
     setIsFormVisible(false);
@@ -60,9 +74,6 @@ function App() {
   const handleEdit = (player) => {
     setEditingPlayer(player);
     setIsFormVisible(true);
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: "smooth" });
-    }
   };
 
   const handleCancelEdit = () => {
@@ -73,9 +84,6 @@ function App() {
   const handleShowForm = () => {
     setIsFormVisible(true);
     setEditingPlayer(null);
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: "smooth" });
-    }
   };
 
   const handleDelete = (playerId) => {
