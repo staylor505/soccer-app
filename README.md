@@ -2,59 +2,59 @@
 
 ![Kicking Soccer Ball](frontend/public/soccer.jpeg)
 
-A full-stack soccer player management app built with Node.js, Express, React, MongoDB, and Vite.
+Soccer Management App is a full-stack CRUD project for managing player profiles, stats, and photos.
+
+## Stack
+
+- Backend: Node.js, Express, Mongoose, Multer
+- Frontend: React 18, Vite, Axios
+- Database: MongoDB
 
 ## Features
 
-- View, add, edit, and delete players
-- Select a current player and view detailed stats
-- Upload player photos
-- Replace or remove an existing player photo while editing
-- Form validation and save feedback
-- Delete confirmation modal
-
-## Tech Stack
-
-- Backend: Node.js, Express, Mongoose, Multer
-- Frontend: React 18, Vite, Axios, Materialize CSS
-- Database: MongoDB
+- Create, read, update, and delete soccer players
+- View a selected player's details
+- Upload a player image when creating/editing
+- Replace or remove an existing player image
+- Health endpoint for backend status checks
 
 ## Project Structure
 
 ```text
-backend/
-frontend/
-README.md
+soccer-app/
+	backend/
+	frontend/
+	README.md
 ```
 
 ## Prerequisites
 
 - Node.js 18+
 - npm
-- MongoDB connection string (local or Atlas)
+- MongoDB (local or Atlas)
 
 ## Environment Variables
 
-Create this file:
-
-### backend/.env
+Backend (`backend/.env`):
 
 ```env
 PORT=4000
 MONGODB_URI=mongodb://127.0.0.1:27017/soccerDB
 ```
 
-Optional frontend environment override:
+Notes:
+- If `PORT` is not set, backend defaults to `4000`.
+- If `MONGODB_URI` is not set, backend defaults to `mongodb://127.0.0.1:27017/soccerDB`.
 
-### frontend/.env
+Frontend (`frontend/.env`, optional):
 
 ```env
 REACT_APP_API_URL=http://localhost:4000
 ```
 
-If `REACT_APP_API_URL` is not set, frontend defaults to `http://localhost:4000`.
+If not set, the frontend also defaults to `http://localhost:4000`.
 
-## Local Setup
+## Installation
 
 1. Install backend dependencies:
 
@@ -70,7 +70,7 @@ cd ../frontend
 npm install
 ```
 
-## Run Locally
+## Running Locally
 
 Open two terminals from the project root.
 
@@ -85,42 +85,42 @@ npm start
 
 ```sh
 cd frontend
-npm run dev
+npm start
 ```
 
-Default local URLs:
-
-- Frontend: `http://localhost:3000`
-- Backend: `http://localhost:4000`
+App URLs:
+- Frontend: http://localhost:3000
+- Backend: http://localhost:4000
+- Backend health check: http://localhost:4000/health
 
 ## Scripts
 
-### Backend
+Backend:
+- `npm start`: Runs server with nodemon and babel-node
 
-- `npm start`: runs backend with nodemon + babel-node
+Frontend:
+- `npm start`: Starts Vite dev server
+- `npm run dev`: Starts Vite dev server
+- `npm run build`: Builds production bundle into `frontend/build`
+- `npm run preview`: Previews production build
 
-### Frontend
+## API
 
-- `npm run dev` (or `npm start`): starts Vite dev server
-- `npm run build`: creates production build in `frontend/build`
-- `npm run preview`: previews the production build locally
+Base URL: `http://localhost:4000`
 
-Note: `npm run preview` expects an existing build. Run `npm run build` first.
+- `GET /`: Basic server message
+- `GET /health`: Returns `{ "status": "ok" }`
+- `GET /players`: Get all players
+- `GET /players/:playerid`: Get one player by id
+- `POST /players`: Create player (supports image upload via `image` field)
+- `PUT /players/:playerid`: Update player (supports image replace/remove)
+- `DELETE /players/:playerid`: Delete player
 
-## API Endpoints
+## Uploads
 
-- `GET /players`: list all players
-- `POST /players`: create player (multipart file upload via `image`)
-- `GET /players/:playerid`: get one player
-- `PUT /players/:playerid`: update player (supports image replace/remove)
-- `DELETE /players/:playerid`: delete player
-- `GET /health`: health check
-
-## Image Upload Notes
-
-- Accepted file types: `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`
-- Max file size: 5 MB
-- Uploaded files are served from `/uploads`
+- Supported image types: `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`
+- Max upload size: 5 MB
+- Uploaded files are served from `http://localhost:4000/uploads/...`
 
 ## Deployment (Recommended)
 
