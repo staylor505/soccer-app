@@ -90,6 +90,7 @@ npm start
 ```
 
 App URLs:
+
 - Frontend: http://localhost:3000
 - Backend: http://localhost:4000
 - Backend health check: http://localhost:4000/health
@@ -97,9 +98,11 @@ App URLs:
 ## Scripts
 
 Backend:
-- `npm start`: Runs server with nodemon and babel-node
+
+- `npm start`: Runs server with nodemon (native Node ESM)
 
 Frontend:
+
 - `npm start`: Starts Vite dev server
 - `npm run dev`: Starts Vite dev server
 - `npm run build`: Builds production bundle into `frontend/build`

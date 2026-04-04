@@ -22,7 +22,7 @@ This is the React + Vite frontend for the Soccer Management App.
 npm install
 ```
 
-2. Optional: create `.env` to override the backend API base URL:
+1. Optional: create `.env` to override the backend API base URL:
 
 ```env
 REACT_APP_API_URL=http://localhost:4000
