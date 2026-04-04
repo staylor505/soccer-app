@@ -87,14 +87,14 @@ const PlayerSingle = (props) => {
           </div>
           <div className="card-action player-card-actions">
             <button
-              className="btn waves-effect waves-light blue"
+              className="btn waves-effect waves-light blue app-btn-large"
               onClick={() => props.onEdit(props.player)}
             >
               <i className="material-icons left">edit</i>
               Edit
             </button>
             <button
-              className="btn waves-effect waves-light red"
+              className="btn waves-effect waves-light red app-btn-large"
               onClick={() => props.onDelete(props.player._id)}
             >
               <i className="material-icons left">delete</i>

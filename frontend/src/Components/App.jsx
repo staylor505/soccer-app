@@ -148,7 +148,7 @@ function App() {
               <div className="row" style={{ marginTop: "1rem" }}>
                 <div className="col s12 center">
                   <button
-                    className="btn waves-effect waves-light teal"
+                    className="btn waves-effect waves-light teal app-btn-large"
                     onClick={handleShowForm}
                   >
                     <i className="material-icons left">add</i>

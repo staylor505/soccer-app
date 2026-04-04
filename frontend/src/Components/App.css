@@ -1,6 +1,7 @@
 .app-shell {
   min-height: 100vh;
   padding-bottom: 2rem;
+  overflow-x: clip;
   background:
     radial-gradient(circle at top right, rgba(255, 214, 102, 0.35), transparent 28%),
     linear-gradient(180deg, #f4f9f2 0%, #e6f1ec 100%);
@@ -12,6 +13,7 @@
 
 .content-grid {
   margin-top: 1.5rem;
+  overflow-x: hidden;
 }
 
 .panel-card {
@@ -19,6 +21,14 @@
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 20px 40px rgba(26, 71, 63, 0.1);
+}
+
+.app-btn-large {
+  font-size: 1.05rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  height: 40px;
+  line-height: 40px;
 }
 
 .page-status {
@@ -88,8 +98,29 @@
   padding: 8px 24px;
 }
 
+.player-card .card-action:last-child {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-bottom: 18px;
+}
+
+.player-card .card-action:last-child .btn {
+  margin: 0;
+}
+
 .form-panel {
   margin-top: 1rem;
+  overflow-x: hidden;
+}
+
+.form-panel .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.form-panel .col {
+  min-width: 0;
 }
 
 .form-feedback {
@@ -112,51 +143,25 @@
 .form-actions {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 0.5rem;
   flex-wrap: nowrap;
   width: 100%;
+  clear: both;
 }
 
-.form-actions .btn {
-  flex: 1 1 0;
-  min-width: 0;
-  padding: 0 0.75rem;
-  margin: 0 !important;
-}
-
-.form-submit-btn {
-  background-color: #0a7a62 !important;
-}
-
-.form-submit-btn:hover,
-.form-submit-btn:focus {
-  background-color: #08634f !important;
-}
-
-.photo-upload-btn {
-  background-color: #1f6f8b !important;
-}
-
-.photo-upload-btn:hover,
-.photo-upload-btn:focus {
-  background-color: #18586d !important;
-}
-
-.form-photo-actions {
+.photo-actions {
   display: flex;
   gap: 0.75rem;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.player-card-actions {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.player-card-actions .btn {
+.form-actions .btn {
   margin: 0 !important;
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
 }
 
 .delete-modal-overlay {
@@ -203,7 +208,7 @@
   padding: 0.4rem 0.6rem;
   align-items: flex-start;
   justify-content: space-between;
-  min-width: 320px;
+  min-width: 0;
   border-radius: 4px;
 }
 
@@ -259,13 +264,32 @@
     font-size: 1rem;
   }
 
-  .form-photo-actions .btn,
-  .player-card-actions .btn {
-    width: 100%;
-  }
-
   #title {
     width: auto;
     font-size: 1.5rem;
+  }
+
+  .player-details {
+    gap: 1rem;
+  }
+
+  .details-column {
+    flex-basis: 100%;
+  }
+
+  .detail-row {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-wrap: nowrap;
+  }
+
+  .form-actions .btn {
+    width: auto;
+  }
+
+  .photo-actions .btn {
+    width: 100%;
   }
 }

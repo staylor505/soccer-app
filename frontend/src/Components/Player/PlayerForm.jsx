@@ -302,93 +302,97 @@ function PlayerForm(props) {
             <label htmlFor="tactical">Tactical</label>
           </div>
         </div>
-        <div className="col s12" style={{ marginBottom: "1rem" }}>
-          <label style={{ display: "block", marginBottom: "0.5rem", color: "#16423c", fontWeight: 600 }}>
-            Player Photo
-          </label>
-          {imagePreview ? (
-            <>
-              <img
-                src={imagePreview}
-                alt="Preview"
-                style={{ width: 80, height: 80, objectFit: "cover", borderRadius: "50%", marginBottom: "0.5rem", display: "block" }}
-              />
-              <span style={{ fontSize: "0.82rem", color: "#888", display: "block", marginBottom: "0.75rem" }}>
-                Select a new file below to replace the current photo.
-              </span>
-              <div className="form-photo-actions">
-                <button
-                  type="button"
-                  className="btn waves-effect waves-light red lighten-2"
-                  onClick={handleRemoveImage}
-                >
-                  <i className="material-icons left">delete</i>
-                  Remove Photo
-                </button>
+        <div className="row">
+          <div className="col s12" style={{ marginBottom: "1rem" }}>
+            <label style={{ display: "block", marginBottom: "0.5rem", color: "#16423c", fontWeight: 600 }}>
+              Player Photo
+            </label>
+            {imagePreview ? (
+              <>
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  style={{ width: 80, height: 80, objectFit: "cover", borderRadius: "50%", marginBottom: "0.5rem", display: "block" }}
+                />
+                <span style={{ fontSize: "0.82rem", color: "#888", display: "block", marginBottom: "0.75rem" }}>
+                  Select a new file below to replace the current photo.
+                </span>
+                <div className="photo-actions">
+                  <button
+                    type="button"
+                    className="btn waves-effect waves-light red lighten-2 app-btn-large"
+                    onClick={handleRemoveImage}
+                  >
+                    <i className="material-icons left">delete</i>
+                    Remove Photo
+                  </button>
+                  <label
+                    htmlFor="playerPhotoInput"
+                    className="btn waves-effect waves-light blue-grey lighten-1 app-btn-large"
+                    style={{ cursor: "pointer", margin: 0 }}
+                  >
+                    <i className="material-icons left">upload</i>
+                    Choose Photo
+                  </label>
+                </div>
+              </>
+            ) : removeImage ? (
+              <>
+                <span style={{ fontSize: "0.82rem", color: "#c0392b", display: "block", marginBottom: "0.75rem" }}>
+                  Photo will be removed on save. Upload a new file below to replace it instead.
+                </span>
                 <label
                   htmlFor="playerPhotoInput"
-                  className="btn waves-effect waves-light photo-upload-btn"
-                  style={{ cursor: "pointer", margin: 0 }}
+                  className="btn waves-effect waves-light blue-grey lighten-1 app-btn-large"
+                  style={{ cursor: "pointer" }}
                 >
                   <i className="material-icons left">upload</i>
                   Choose Photo
                 </label>
-              </div>
-            </>
-          ) : removeImage ? (
-            <>
-              <span style={{ fontSize: "0.82rem", color: "#c0392b", display: "block", marginBottom: "0.75rem" }}>
-                Photo will be removed on save. Upload a new file below to replace it instead.
-              </span>
-              <label
-                htmlFor="playerPhotoInput"
-                className="btn waves-effect waves-light photo-upload-btn"
-                style={{ cursor: "pointer" }}
-              >
-                <i className="material-icons left">upload</i>
-                Choose Photo
-              </label>
-            </>
-          ) : (
-            <>
-              <span style={{ fontSize: "0.82rem", color: "#888", display: "block", marginBottom: "0.75rem" }}>
-                Upload a photo of the player (JPG, PNG, or WebP, max 5 MB).
-              </span>
-              <label
-                htmlFor="playerPhotoInput"
-                className="btn waves-effect waves-light photo-upload-btn"
-                style={{ cursor: "pointer" }}
-              >
-                <i className="material-icons left">upload</i>
-                Choose Photo
-              </label>
-            </>
-          )}
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            ref={fileInputRef}
-            id="playerPhotoInput"
-            style={{ display: "none" }}
-          />
+              </>
+            ) : (
+              <>
+                <span style={{ fontSize: "0.82rem", color: "#888", display: "block", marginBottom: "0.75rem" }}>
+                  Upload a photo of the player (JPG, PNG, or WebP, max 5 MB).
+                </span>
+                <label
+                  htmlFor="playerPhotoInput"
+                  className="btn waves-effect waves-light blue-grey lighten-1 app-btn-large"
+                  style={{ cursor: "pointer" }}
+                >
+                  <i className="material-icons left">upload</i>
+                  Choose Photo
+                </label>
+              </>
+            )}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              ref={fileInputRef}
+              id="playerPhotoInput"
+              style={{ display: "none" }}
+            />
+          </div>
         </div>
-        <div className="form-actions">
-          <button
-            className="btn waves-effect waves-light form-submit-btn"
-            type="submit"
-            name="action"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "Saving..." : submitButtonText}
-          </button>
-          <button
-            className="btn waves-effect waves-light grey"
-            type="button"
-            onClick={handleCancel}
-          >
-            Cancel
-          </button>
+        <div className="row">
+          <div className="col s12 form-actions">
+            <button
+              className="btn waves-effect waves-light teal darken-2 app-btn-large"
+              type="submit"
+              name="action"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Saving..." : submitButtonText}
+            </button>
+            <button
+              className="btn waves-effect waves-light grey"
+              type="button"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </form>
     </div>
