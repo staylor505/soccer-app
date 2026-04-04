@@ -2,15 +2,16 @@
 
 ![Kicking Soccer Ball](frontend/public/soccer.jpeg)
 
-A full-stack soccer player management app built with Node, Express, React, MongoDB, and Vite.
+A full-stack soccer player management app built with Node.js, Express, React, MongoDB, and Vite.
 
 ## Features
 
 - View, add, edit, and delete players
-- Select a current player from the list and view detailed stats
-- Upload player photos from the form
+- Select a current player and view detailed stats
+- Upload player photos
 - Replace or remove an existing player photo while editing
-- Custom delete confirmation modal
+- Form validation and save feedback
+- Delete confirmation modal
 
 ## Tech Stack
 
@@ -30,9 +31,30 @@ README.md
 
 - Node.js 18+
 - npm
-- MongoDB connection string
+- MongoDB connection string (local or Atlas)
 
-## Setup
+## Environment Variables
+
+Create this file:
+
+### backend/.env
+
+```env
+PORT=4000
+MONGODB_URI=mongodb://127.0.0.1:27017/soccerDB
+```
+
+Optional frontend environment override:
+
+### frontend/.env
+
+```env
+REACT_APP_API_URL=http://localhost:4000
+```
+
+If `REACT_APP_API_URL` is not set, frontend defaults to `http://localhost:4000`.
+
+## Local Setup
 
 1. Install backend dependencies:
 
@@ -41,29 +63,16 @@ cd backend
 npm install
 ```
 
-1. Create `backend/.env` with your values:
-
-```env
-PORT=4000
-MONGODB_URI=<your-mongodb-connection-string>
-```
-
-1. Install frontend dependencies:
+2. Install frontend dependencies:
 
 ```sh
 cd ../frontend
 npm install
 ```
 
-1. Optional: create `frontend/.env` to override API URL:
+## Run Locally
 
-```env
-REACT_APP_API_URL=http://localhost:4000
-```
-
-## Run the App
-
-From two separate terminals:
+Open two terminals from the project root.
 
 1. Start backend:
 
@@ -72,42 +81,60 @@ cd backend
 npm start
 ```
 
-1. Start frontend:
+2. Start frontend:
 
 ```sh
 cd frontend
-npm start
+npm run dev
 ```
 
-Frontend runs on `http://localhost:3000`.
-Backend runs on `http://localhost:4000`.
+Default local URLs:
 
-## Available Scripts
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:4000`
+
+## Scripts
 
 ### Backend
 
-- `npm start` - runs backend with nodemon + babel-node
+- `npm start`: runs backend with nodemon + babel-node
 
 ### Frontend
 
-- `npm start` or `npm run dev` - start Vite dev server
-- `npm run build` - production build
-- `npm run preview` - preview production build
+- `npm run dev` (or `npm start`): starts Vite dev server
+- `npm run build`: creates production build in `frontend/build`
+- `npm run preview`: previews the production build locally
+
+Note: `npm run preview` expects an existing build. Run `npm run build` first.
 
 ## API Endpoints
 
-- `GET /players` - retrieve all players
-- `POST /players` - create player (supports multipart file upload via `image` field)
-- `GET /players/:playerid` - retrieve one player
-- `PUT /players/:playerid` - update player (supports image replace/remove)
-- `DELETE /players/:playerid` - delete player
-- `GET /health` - health check
+- `GET /players`: list all players
+- `POST /players`: create player (multipart file upload via `image`)
+- `GET /players/:playerid`: get one player
+- `PUT /players/:playerid`: update player (supports image replace/remove)
+- `DELETE /players/:playerid`: delete player
+- `GET /health`: health check
 
 ## Image Upload Notes
 
 - Accepted file types: `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`
 - Max file size: 5 MB
 - Uploaded files are served from `/uploads`
+
+## Deployment (Recommended)
+
+- Frontend: Vercel or Netlify
+- Backend: Render or Railway
+- Database: MongoDB Atlas
+
+Set production frontend environment variable:
+
+```env
+REACT_APP_API_URL=https://your-backend-url
+```
+
+Important: this app currently stores uploads on local disk (`backend/uploads`). On many cloud hosts, disk is ephemeral. For long-term production reliability, move image storage to a service like Cloudinary or S3.
 
 ## License
 
