@@ -4,8 +4,8 @@ import {
   getPlayers,
   getPlayerWithID,
   updatePlayer
-} from '../controllers/playerControllers';
-import upload from '../upload';
+} from '../controllers/playerControllers.js';
+import upload from '../upload.js';
 
 const routes = (app) => {
   app.route('/players')

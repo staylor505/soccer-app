@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 import fs from "fs";
 import path from "path";
-import Player from "../models/playerModel";
+import { fileURLToPath } from "url";
+import Player from "../models/playerModel.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const deleteImageFile = (imagePath) => {
   if (!imagePath) return;
