@@ -43,6 +43,7 @@ MONGODB_URI=mongodb://127.0.0.1:27017/soccerDB
 ```
 
 Notes:
+
 - If `PORT` is not set, backend defaults to `4000`.
 - If `MONGODB_URI` is not set, backend defaults to `mongodb://127.0.0.1:27017/soccerDB`.
 
