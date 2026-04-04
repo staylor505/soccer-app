@@ -22,7 +22,7 @@ This is the React + Vite frontend for the Soccer Management App.
 npm install
 ```
 
-1. Optional: create `.env` to override the backend API base URL:
+2. Optional: create `.env` to override the backend API base URL:
 
 ```env
 REACT_APP_API_URL=http://localhost:4000
@@ -57,7 +57,8 @@ The app runs at http://localhost:3000.
 
 - `src/api.jsx`: Axios instance and API base URL configuration
 - `src/Components/Player/`: Player form, list, and detail components
-- `vite.config.js`: Dev server (`3000`), build output (`build`), and env prefix (`REACT_APP_`)
+- `vite.config.js`: Dev server (`3000`), build output (`build`), and env
+  prefix (`REACT_APP_`)
 
 ## Notes
 

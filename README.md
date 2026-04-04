@@ -22,9 +22,9 @@ Soccer Management App is a full-stack CRUD project for managing player profiles,
 
 ```text
 soccer-app/
-	backend/
-	frontend/
-	README.md
+  backend/
+  frontend/
+  README.md
 ```
 
 ## Prerequisites
