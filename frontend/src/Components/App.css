@@ -109,6 +109,56 @@
   background: #ffe4e1;
 }
 
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.form-actions .btn {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 0.75rem;
+  margin: 0 !important;
+}
+
+.form-submit-btn {
+  background-color: #0a7a62 !important;
+}
+
+.form-submit-btn:hover,
+.form-submit-btn:focus {
+  background-color: #08634f !important;
+}
+
+.photo-upload-btn {
+  background-color: #1f6f8b !important;
+}
+
+.photo-upload-btn:hover,
+.photo-upload-btn:focus {
+  background-color: #18586d !important;
+}
+
+.form-photo-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.player-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.player-card-actions .btn {
+  margin: 0 !important;
+}
+
 .delete-modal-overlay {
   position: fixed;
   top: 0;
@@ -207,6 +257,11 @@
 @media only screen and (max-width: 992px) {
   .card-action {
     font-size: 1rem;
+  }
+
+  .form-photo-actions .btn,
+  .player-card-actions .btn {
+    width: 100%;
   }
 
   #title {

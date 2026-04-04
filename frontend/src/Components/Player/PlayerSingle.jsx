@@ -85,7 +85,7 @@ const PlayerSingle = (props) => {
           <div className="card-action blue lighten-3">
             <p style={{ margin: 0 }}><b>Team:</b> <span className="white-text">{renderValue(props.player.team, "Free agent")}</span></p>
           </div>
-          <div className="card-action">
+          <div className="card-action player-card-actions">
             <button
               className="btn waves-effect waves-light blue"
               onClick={() => props.onEdit(props.player)}
@@ -96,7 +96,6 @@ const PlayerSingle = (props) => {
             <button
               className="btn waves-effect waves-light red"
               onClick={() => props.onDelete(props.player._id)}
-              style={{ marginLeft: "0.5rem" }}
             >
               <i className="material-icons left">delete</i>
               Delete

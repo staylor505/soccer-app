@@ -316,7 +316,7 @@ function PlayerForm(props) {
               <span style={{ fontSize: "0.82rem", color: "#888", display: "block", marginBottom: "0.75rem" }}>
                 Select a new file below to replace the current photo.
               </span>
-              <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
+              <div className="form-photo-actions">
                 <button
                   type="button"
                   className="btn waves-effect waves-light red lighten-2"
@@ -327,7 +327,7 @@ function PlayerForm(props) {
                 </button>
                 <label
                   htmlFor="playerPhotoInput"
-                  className="btn waves-effect waves-light teal"
+                  className="btn waves-effect waves-light photo-upload-btn"
                   style={{ cursor: "pointer", margin: 0 }}
                 >
                   <i className="material-icons left">upload</i>
@@ -342,7 +342,7 @@ function PlayerForm(props) {
               </span>
               <label
                 htmlFor="playerPhotoInput"
-                className="btn waves-effect waves-light teal"
+                className="btn waves-effect waves-light photo-upload-btn"
                 style={{ cursor: "pointer" }}
               >
                 <i className="material-icons left">upload</i>
@@ -356,7 +356,7 @@ function PlayerForm(props) {
               </span>
               <label
                 htmlFor="playerPhotoInput"
-                className="btn waves-effect waves-light teal"
+                className="btn waves-effect waves-light photo-upload-btn"
                 style={{ cursor: "pointer" }}
               >
                 <i className="material-icons left">upload</i>
@@ -373,24 +373,23 @@ function PlayerForm(props) {
             style={{ display: "none" }}
           />
         </div>
-        <button
-          className="btn waves-effect waves-light"
-          type="submit"
-          name="action"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "Saving..." : submitButtonText}
-        </button>
-        {isEditing && (
+        <div className="form-actions">
+          <button
+            className="btn waves-effect waves-light form-submit-btn"
+            type="submit"
+            name="action"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Saving..." : submitButtonText}
+          </button>
           <button
             className="btn waves-effect waves-light grey"
             type="button"
             onClick={handleCancel}
-            style={{ marginLeft: "0.5rem" }}
           >
             Cancel
           </button>
-        )}
+        </div>
       </form>
     </div>
   );
