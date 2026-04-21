@@ -4,8 +4,8 @@ This is the React + Vite frontend for the Soccer Management App.
 
 ## Tech
 
-- React 18
-- Vite
+- React 19
+- Vite (latest)
 - Axios
 
 ## Prerequisites
@@ -32,16 +32,13 @@ If `.env` is not present, the app defaults to `http://localhost:4000`.
 
 ## Run
 
-Start the development server:
 
-```sh
-npm start
-```
-
-or:
+Start the development server (recommended):
 
 ```sh
 npm run dev
+# or
+npm start
 ```
 
 The app runs at http://localhost:3000.
@@ -49,7 +46,7 @@ The app runs at http://localhost:3000.
 ## Scripts
 
 - `npm start`: Start Vite dev server
-- `npm run dev`: Start Vite dev server
+- `npm run dev`: Start Vite dev server (recommended)
 - `npm run build`: Create production build in `build/`
 - `npm run preview`: Preview production build locally
 

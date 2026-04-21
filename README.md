@@ -7,7 +7,7 @@ Soccer Management App is a full-stack CRUD project for managing player profiles,
 ## Stack
 
 - Backend: Node.js, Express, Mongoose, Multer
-- Frontend: React 18, Vite, Axios
+- Frontend: React 19, Vite (latest), Axios
 - Database: MongoDB
 
 ## Features
@@ -82,10 +82,13 @@ cd backend
 npm start
 ```
 
+
 2. Start frontend:
 
 ```sh
 cd frontend
+npm run dev
+# or
 npm start
 ```
 
@@ -104,7 +107,7 @@ Backend:
 Frontend:
 
 - `npm start`: Starts Vite dev server
-- `npm run dev`: Starts Vite dev server
+- `npm run dev`: Starts Vite dev server (recommended)
 - `npm run build`: Builds production bundle into `frontend/build`
 - `npm run preview`: Previews production build
 
