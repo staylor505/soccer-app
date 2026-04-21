@@ -32,7 +32,6 @@ If `.env` is not present, the app defaults to `http://localhost:4000`.
 
 ## Run
 
-
 Start the development server (recommended):
 
 ```sh
