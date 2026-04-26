@@ -124,13 +124,13 @@ export const updatePlayer = async (req, res) => {
       player = await Player.findByIdAndUpdate(
         req.params.playerid,
         { $set: data, $unset: { image: 1 } },
-        { new: true }
+        { returnDocument: 'after' }
       );
     } else {
       player = await Player.findByIdAndUpdate(
         req.params.playerid,
         { $set: data },
-        { new: true, runValidators: true }
+        { returnDocument: 'after', runValidators: true }
       );
     }
 
