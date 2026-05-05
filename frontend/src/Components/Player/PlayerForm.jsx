@@ -1,6 +1,6 @@
 /* global M */
 import React, { useState, useEffect, useRef } from "react";
-import api from "../../api.jsx";
+import api, { buildAssetUrl } from "../../api.jsx";
 
 const initialFormData = {
   firstName: "",
@@ -29,9 +29,7 @@ function PlayerForm(props) {
   useEffect(() => {
     if (props.editingPlayer) {
       setFormData(props.editingPlayer);
-      setImagePreview(props.editingPlayer.image
-        ? `http://localhost:4000${props.editingPlayer.image}`
-        : null);
+      setImagePreview(buildAssetUrl(props.editingPlayer.image));
     } else {
       setFormData(initialFormData);
       setImagePreview(null);

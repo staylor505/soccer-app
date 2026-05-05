@@ -1,7 +1,21 @@
 import axios from "axios";
 
+export const API_BASE_URL = import.meta.env.REACT_APP_API_URL || "http://localhost:4000";
+
+export const buildAssetUrl = (assetPath) => {
+  if (!assetPath) {
+    return null;
+  }
+
+  if (/^https?:\/\//.test(assetPath)) {
+    return assetPath;
+  }
+
+  return `${API_BASE_URL}${assetPath}`;
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.REACT_APP_API_URL || "http://localhost:4000",
+  baseURL: API_BASE_URL,
 });
 
 // Allow FormData requests to set their own Content-Type (including multipart boundary)

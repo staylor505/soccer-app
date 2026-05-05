@@ -1,4 +1,5 @@
 import React from "react";
+import { buildAssetUrl } from "../../api.jsx";
 
 const renderValue = (value, fallback = "Not provided") => {
   if (value === null || value === undefined || value === "") {
@@ -73,7 +74,7 @@ const PlayerSingle = (props) => {
                   <div style={{ textAlign: "center", marginTop: "2rem" }}>
                     <p style={{ margin: "0 0 0.4rem", fontWeight: 600, color: "#16423c", fontSize: "0.9rem" }}>Player Photo</p>
                     <img
-                      src={`http://localhost:4000${props.player.image}`}
+                      src={buildAssetUrl(props.player.image)}
                       alt={`${props.player.firstName} ${props.player.lastName}`}
                       style={{ width: "100%", maxWidth: 200, height: "auto", display: "block", margin: "0 auto", borderRadius: "4px" }}
                     />
