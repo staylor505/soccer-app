@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   res.send(`Soccer Management app is running on Port ${PORT}.`);
 });
 
-app.get("/health", (req, res) => {
+app.get("/healths", (req, res) => {
   const dbStates = ["disconnected", "connected", "connecting", "disconnecting"];
   const dbState = dbStates[mongoose.connection.readyState] || "unknown";
 
@@ -33,10 +33,6 @@ app.get("/health", (req, res) => {
     uptimeSeconds: Math.floor(process.uptime()),
     timestamp: new Date().toISOString(),
   });
-});
-
-app.get("/healthz", (req, res) => {
-  res.status(200).json({ status: "ok" });
 });
 
 routes(app);
