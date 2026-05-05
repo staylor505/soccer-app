@@ -23,6 +23,19 @@ app.get("/", (req, res) => {
 });
 
 app.get("/health", (req, res) => {
+  const dbStates = ["disconnected", "connected", "connecting", "disconnecting"];
+  const dbState = dbStates[mongoose.connection.readyState] || "unknown";
+
+  res.status(200).json({
+    status: "ok",
+    service: "soccer-backend",
+    dbState,
+    uptimeSeconds: Math.floor(process.uptime()),
+    timestamp: new Date().toISOString(),
+  });
+});
+
+app.get("/healthz", (req, res) => {
   res.status(200).json({ status: "ok" });
 });
 
