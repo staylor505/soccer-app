@@ -40,6 +40,8 @@ Backend (`backend/.env`):
 ```env
 PORT=4000
 MONGODB_URI=mongodb://127.0.0.1:27017/soccerDB
+# Or use MongoDB Atlas:
+# MONGODB_URI=mongodb+srv://username:password@cluster-url.mongodb.net/soccerDB?retryWrites=true&w=majority
 ```
 
 Notes:
