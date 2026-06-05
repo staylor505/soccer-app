@@ -104,7 +104,8 @@ App URLs:
 
 Backend:
 
-- `npm start`: Runs server with nodemon (native Node ESM)
+- `npm run dev`: Runs server with nodemon (native Node ESM)
+- `npm start`: Runs server with Node (native Node ESM)
 
 Frontend:
 
