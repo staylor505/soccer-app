@@ -40,6 +40,8 @@ Backend (`backend/.env`):
 ```env
 PORT=4000
 MONGODB_URI=mongodb://127.0.0.1:27017/soccerDB
+# Or use MongoDB Atlas:
+# MONGODB_URI=mongodb+srv://username:password@cluster-url.mongodb.net/soccerDB?retryWrites=true&w=majority
 ```
 
 Notes:
@@ -79,7 +81,7 @@ Open two terminals from the project root.
 
 ```sh
 cd backend
-npm start
+npm run dev
 ```
 
 
@@ -141,9 +143,35 @@ Set production frontend environment variable:
 REACT_APP_API_URL=https://your-backend-url
 ```
 
-For Netlify: add `REACT_APP_API_URL` in Site settings -> Environment variables, then trigger a new deploy.
+### Netlify
 
-Important: this app currently stores uploads on local disk (`backend/uploads`). On many cloud hosts, disk is ephemeral. For long-term production reliability, move image storage to a service like Cloudinary or S3.
+- Base directory: `frontend`
+- Build command: `npm run build`
+- Publish directory: `build`
+- Environment variable: `REACT_APP_API_URL=https://your-render-service.onrender.com`
+- Add `REACT_APP_API_URL` in Site settings -> Environment variables, then trigger a new deploy.
+
+### Render
+
+- Root directory: `backend`
+- Runtime: Node
+- Build command: `npm install`
+- Start command: `npm start`
+- Environment variables:
+
+```env
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster-url>/soccerDB?retryWrites=true&w=majority
+```
+
+Render usually injects `PORT` automatically, so you do not need to set it unless you have a specific reason.
+
+### MongoDB Atlas
+
+- Create a free cluster.
+- Create a database user and use that username/password in `MONGODB_URI`.
+- In Network Access, allow Render to connect. For a quick start use `0.0.0.0/0`, then tighten it later if needed.
+
+Important: this app currently stores uploads on local disk (`backend/uploads`). Render disks are ephemeral unless you attach persistent storage, so uploaded images can disappear after a restart or redeploy. For reliable production image storage, move uploads to Cloudinary, S3, or another object store.
 
 ## License
 
