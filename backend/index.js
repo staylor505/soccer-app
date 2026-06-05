@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   res.send(`Soccer Management app is running on Port ${PORT}.`);
 });
 
-app.get("/healths", (req, res) => {
+app.get("/health", (req, res) => {
   const dbStates = ["disconnected", "connected", "connecting", "disconnecting"];
   const dbState = dbStates[mongoose.connection.readyState] || "unknown";
 
