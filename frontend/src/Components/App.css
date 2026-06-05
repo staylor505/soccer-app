@@ -42,6 +42,11 @@
   background: #ffe4e1;
 }
 
+.warning-status {
+  color: #7a4b00;
+  background: #fff1d6;
+}
+
 .player-list {
   border: 0;
 }

@@ -1,9 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./App.css";
 import api from "../api.jsx";
+import { API_URL } from "../api.jsx";
 import PlayerList from "./Player/PlayerList.jsx";
 import PlayerSingle from "./Player/PlayerSingle.jsx";
 import PlayerForm from "./Player/PlayerForm.jsx";
+
+const localhostPattern = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i;
+const isProductionWithLocalApi = !import.meta.env.DEV && localhostPattern.test(API_URL);
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -132,6 +136,16 @@ function App() {
           <div className="row">
             <div className="col s12">
               <div className="page-status error-status">{errorMessage}</div>
+            </div>
+          </div>
+        ) : null}
+
+        {isProductionWithLocalApi ? (
+          <div className="row">
+            <div className="col s12">
+              <div className="page-status warning-status">
+                This deployment is using {API_URL} for the API. Set REACT_APP_API_URL or VITE_API_URL in Netlify and redeploy.
+              </div>
             </div>
           </div>
         ) : null}
