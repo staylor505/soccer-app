@@ -1,8 +1,15 @@
 import axios from "axios";
 
+const API_URL = import.meta.env.REACT_APP_API_URL || "http://localhost:4000";
+
 const api = axios.create({
-  baseURL: import.meta.env.REACT_APP_API_URL || "http://localhost:4000",
+  baseURL: API_URL,
 });
+
+export const buildApiUrl = (path = "") => {
+  if (!path) return API_URL;
+  return `${API_URL}${path.startsWith("/") ? path : `/${path}`}`;
+};
 
 // Allow FormData requests to set their own Content-Type (including multipart boundary)
 api.interceptors.request.use((config) => {

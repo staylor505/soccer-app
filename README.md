@@ -141,6 +141,8 @@ Set production frontend environment variable:
 REACT_APP_API_URL=https://your-backend-url
 ```
 
+For Netlify: add `REACT_APP_API_URL` in Site settings -> Environment variables, then trigger a new deploy.
+
 Important: this app currently stores uploads on local disk (`backend/uploads`). On many cloud hosts, disk is ephemeral. For long-term production reliability, move image storage to a service like Cloudinary or S3.
 
 ## License
