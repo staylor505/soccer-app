@@ -16,5 +16,5 @@ export default defineConfig({
     outDir: 'build',
     sourcemap: false,
   },
-  envPrefix: 'REACT_APP_',
+  envPrefix: ['VITE_', 'REACT_APP_'],
 })
