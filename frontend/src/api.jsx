@@ -1,14 +1,15 @@
 import axios from "axios";
 
-const rawApiUrl =
+const configuredApiUrl =
   import.meta.env.REACT_APP_API_URL ||
-  import.meta.env.VITE_API_URL ||
-  "http://localhost:4000";
+  import.meta.env.VITE_API_URL;
+
+const rawApiUrl = configuredApiUrl || (import.meta.env.DEV ? "http://localhost:4000" : "");
 
 export const API_URL = rawApiUrl.replace(/\/+$/, "");
 
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: API_URL || undefined,
 });
 
 export const buildApiUrl = (path = "") => {
